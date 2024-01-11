@@ -1,0 +1,12 @@
+.login {
+    display: flex;
+    flex-direction: column;
+    mat-form-field {
+        max-width: calc(70vh - 34px);
+        // min-width: calc(50vh - 34px);
+    }
+    .registrar{
+        max-width: calc(70vh - 34px);
+        // min-width: calc(50vh - 34px);
+    }
+}

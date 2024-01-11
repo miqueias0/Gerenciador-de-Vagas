@@ -1,0 +1,41 @@
+<div class="divLogin">
+  <form [formGroup]="form" class="login" *ngIf="!registrarLayout">
+    <mat-form-field appearance="outline">
+      <input matInput placeholder="Email" formControlName="email" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <input
+        matInput
+        placeholder="Senha"
+        [type]="hide ? 'password' : 'text'"
+        formControlName="senha"
+        (keydown.enter)="login()"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+    </mat-form-field>
+    <button mat-button (click)="login()">
+      Login
+    </button>
+    <button mat-button (click)="registrar()" style="white-space: break-spaces !important;">
+      Criar uma conta
+    </button>
+  </form>
+  <div class="login" *ngIf="registrarLayout">
+    <app-registrar
+    buttonName="Registrar"
+  ></app-registrar>
+  <button mat-button (click)="registrar()">
+    Cancelar
+  </button>
+  </div>
+  
+</div>
+<article></article>

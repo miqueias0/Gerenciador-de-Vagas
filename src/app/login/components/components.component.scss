@@ -1,0 +1,129 @@
+@media(min-width: 550px){
+    :host {
+        height: calc(100dvh);
+        display: flex;
+        flex-direction: column;
+        background: linear-gradient(45deg, rgb(84, 186, 185), rgb(158, 210, 198), rgb(233, 218, 193), rgb(247, 236, 222));
+        background-size: 300% 300%;
+        animation: colors 15s ease infinite;
+        overflow: hidden;
+    }
+    .divLogin {
+        flex-direction: row;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        .login {
+            display: flex;
+            flex-direction: column;
+            min-width: calc(50vh - 1vh);
+            margin-left: 5dvh;
+            color: #000;
+        }
+    }
+}
+
+@media screen and (max-width: 550px) and (min-height: 250px){
+    :host {
+        height: calc(100dvh);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: linear-gradient(45deg, rgb(84, 186, 185), rgb(158, 210, 198), rgb(233, 218, 193), rgb(247, 236, 222));
+        background-size: 300% 300%;
+        animation: colors 15s ease infinite;
+        overflow: hidden;
+    }
+    .divLogin {
+        flex-direction: row;
+        align-items: center;
+        height: 100dvh;
+        width: 90dvw;
+        display: flex;
+        .login {
+            display: flex;
+            flex-direction: column;
+            width: -webkit-fill-available;
+            color: #000;
+        }
+    }
+}
+
+@media (max-height: 250px){
+    :host {
+        height: calc(100dvh);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: linear-gradient(45deg, rgb(84, 186, 185), rgb(158, 210, 198), rgb(233, 218, 193), rgb(247, 236, 222));
+        background-size: 300% 300%;
+        animation: colors 15s ease infinite;
+        overflow: hidden;
+    }
+    .divLogin {
+        flex-direction: row;
+        align-items: center;
+        height: 100dvh;
+        width: 90dvw;
+        display: flex;
+        .login {
+            display: flex;
+            flex-direction: row;
+            width: -webkit-fill-available;
+            color: #000;
+        }
+    }
+}
+
+.divAnimate {
+    display: flex;
+    width: 100%;
+    height: 50%;
+    align-items: end;
+    .barra1{
+        margin-right: 1vw;
+        height: 100%;
+        animation: bar1 15s ease infinite;
+        background: black;
+        min-width: 1%;
+        display: flex;
+    }
+    
+}
+
+@keyframes bar1 {
+    0% {
+        height: 0%;
+    }
+    25% {
+        height: 50%;
+    }
+    50% {
+        height: 100%;
+    }
+    75% {
+        height: 50%;
+    }
+    100% {
+        height: 0%;
+    }
+}
+
+@keyframes colors {
+    0% {
+        background-position: 0% 50%;
+    }
+    25% {
+        background-position: 50% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    75% {
+        background-position: 50% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
