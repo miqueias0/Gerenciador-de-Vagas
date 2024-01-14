@@ -1,0 +1,1 @@
+export * from './vaga.service';

@@ -1,6 +1,7 @@
 // telas
 export * from './login';
 export * from './registrar';
+export * from './hub';
 // export * from './planilha';
 
 

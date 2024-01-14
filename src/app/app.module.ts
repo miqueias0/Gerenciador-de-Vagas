@@ -9,6 +9,8 @@ import { AuthService } from './auth';
 import { ComponentsComponent } from './login';
 import { MaterialModule } from './material';
 import { RegistrarComponent } from './registrar';
+import { HubComponent } from './hub/components/hub.component';
+import { CadastrarComponent } from './cadastrar/cadastrar.component';
 
 
 @NgModule({
@@ -16,6 +18,8 @@ import { RegistrarComponent } from './registrar';
     AppComponent,
     ComponentsComponent,
     RegistrarComponent,
+    HubComponent,
+    CadastrarComponent,
   ],
   imports: [
     BrowserModule,

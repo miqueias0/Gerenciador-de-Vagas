@@ -30,6 +30,7 @@ export class ComponentsComponent implements OnInit {
   async ngOnInit(): Promise<void> {
       if(!localStorage.getItem('token')) return;
       await this.usuarioService.loginComToken();
+      this.router.navigate(['/hub']);
   }
 
   async login() {
@@ -39,6 +40,7 @@ export class ComponentsComponent implements OnInit {
     login.usuario = usuario;
     login.manterLogado = this.form.get('manterLogado')?.value as boolean;
     await this.usuarioService.login(login);
+    this.router.navigate(['/hub']);
   }
 
   registrar(){

@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>Cadastrar Vaga</h1>
+<div mat-dialog-content>
+    <div>
+        <form [formGroup]="form">
+            <mat-form-field appearance="outline">
+                <mat-label>Título</mat-label>
+                <input matInput placeholder="Título" formControlName="titulo" />
+            </mat-form-field>
+            <mat-form-field class="example-chip-list" appearance="outline">
+                <mat-label>Requisitos</mat-label>
+                <mat-chip-list #chipList aria-label="Requisitos">
+                    <mat-chip *ngFor="let requisito of requisitos" (removed)="remove(requisito)">
+                        {{requisito.name}}
+                        <button matChipRemove>
+                            <mat-icon>cancel</mat-icon>
+                        </button>
+                    </mat-chip>
+                    <input placeholder="Novo requisito" [matChipInputFor]="chipList"
+                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+                        (matChipInputTokenEnd)="add($event)">
+                </mat-chip-list>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Descrição</mat-label>
+                <textarea matInput placeholder="Descrição" formControlName="descricao"></textarea>
+            </mat-form-field>
+        </form>
+    </div>
+</div>

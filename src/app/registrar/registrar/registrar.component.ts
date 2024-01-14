@@ -38,7 +38,7 @@ export class RegistrarComponent implements OnInit {
   async registrar(){
     if (!this.form.valid) return alert("Invalid");
     await this.usuarioService.manter(new Usuario(this.form.getRawValue() as any));
-    this.router.navigate(['/planilha']);
+    this.router.navigate(['/hub']);
   }
 
 }
