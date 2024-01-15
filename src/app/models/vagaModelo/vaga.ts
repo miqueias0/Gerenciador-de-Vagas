@@ -26,6 +26,10 @@ export class Vaga implements IVaga {
         this._requisitos = value;
     }
 
+    public get requisitosString() {
+        return this.requisitos && this.requisitos.length > 0 ? this.requisitos.reduce((a, b) => a + ", " + b): null;
+    }
+
     constructor(data?: IVaga) {
         if (data) this.fromRaw(data);
     }

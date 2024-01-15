@@ -18,7 +18,7 @@ export class RegistrarComponent implements OnInit {
   form = this.builder.group({
     id: [''],
     nomeUsuario: ['', [Validators.required]],
-    email: ['', []],
+    email: ['', [Validators.email]],
     telefone: ['', []],
     senha: ['', [Validators.required]],
     tipoUsuario: ['', [Validators.required]],
@@ -33,9 +33,26 @@ export class RegistrarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.form.controls['telefone'].valueChanges.subscribe(value => {
+      if (value) {
+        let soma = value.replace(/\D/g, '').length;
+        var valor = value.replace(/\D/g, '');
+        var telefoneMascarado = "";
+        if (soma > 0) {
+          telefoneMascarado = '(' + valor.substring(0, valor.length < 2 ? valor.length : 2);
+        }
+        if (soma > 2) {
+          telefoneMascarado += ") " + valor.substring(2, soma < 6 ? valor.length : 7);
+        }
+        if (soma > 7) {
+          telefoneMascarado += "-" + valor.substring(7, valor.length < 12 ? valor.length : 12);
+        }
+        this.form.controls['telefone'].setValue(telefoneMascarado, {emitEvent: false});
+      }
+    });
   }
 
-  async registrar(){
+  async registrar() {
     if (!this.form.valid) return alert("Invalid");
     await this.usuarioService.manter(new Usuario(this.form.getRawValue() as any));
     this.router.navigate(['/hub']);

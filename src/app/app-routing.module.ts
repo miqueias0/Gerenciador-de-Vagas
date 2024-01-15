@@ -10,7 +10,6 @@ const routes: Routes = [
   {path: 'login', component: ComponentsComponent},
   {path: 'registrar', component: RegistrarComponent},
   {path: 'hub', component: HubComponent},
-  {path: 'cadastrar', component: CadastrarComponent},
   {path: '**', redirectTo: '/login', pathMatch: 'full'},
 ];
 

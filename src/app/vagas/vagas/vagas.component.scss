@@ -1,0 +1,44 @@
+.divPrincipal {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 10rem 2rem;
+    overflow: auto;
+    .divLista {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .dadosVagaLista {
+        border: 0.1px black solid;
+        border-radius: 20px;
+    }
+    .dadosVaga {
+        border: 0.1px black solid;
+        border-radius: 20px;
+    }
+    .dadosVagaLista:hover{
+        background-color: rgb(212, 216, 216);
+    }
+
+    .informacao {
+        padding: 1rem 1rem 0 !important;
+    }
+}
+
+
+.button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+    .cadastrar:hover{
+        color: white;
+        background-color: rgb(71, 209, 71);
+    }
+    .cancelar:hover{
+        color: white;
+        background-color: rgb(241, 35, 35);
+    }
+}

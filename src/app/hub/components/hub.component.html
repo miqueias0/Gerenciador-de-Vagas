@@ -4,16 +4,29 @@
             <button mat-button class="centralizador" (click)="obterLista()">Vagas</button>
         </div>
         <span style="flex: auto;"></span>
+        <div class="centralizador padinIcon" *ngIf="usuario && usuario.tipoUsuario === 'Contratante'">
+            <button mat-button class="centralizador" (click)="openDialog()">
+                Cadastrar
+            </button>
+        </div>
         <div class="centralizador padinIcon">
             <button mat-icon-button class="centralizador">
-                <mat-icon class="redirect">
-                    <span class="material-symbols-outlined">
-                        account_circle
-                    </span>
-                </mat-icon>
+                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                    <mat-icon class="redirect">
+                        <span class="material-symbols-outlined">
+                            account_circle
+                        </span>
+                    </mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="deslogar()">
+                        <span>Sair</span>
+                    </button>
+                </mat-menu>
             </button>
         </div>
     </nav>
-    <div class="cadastrar" style="width: 100%;">
+    <div class="cadastrar">
+        <app-vagas [lista]="listaVagas" [usuario]="usuario" class="vagas"></app-vagas>
     </div>
 </div>

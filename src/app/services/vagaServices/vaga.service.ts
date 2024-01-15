@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { IVaga, Vaga } from 'src/app/models/vagaModelo';
 import * as baseUrl from 'src/config/api';
 
@@ -16,6 +17,7 @@ export class VagaService {
   API_URL = "http://localhost:8082/" + service.url;
   constructor(
     private http: HttpClient,
+    private readonly snackBar: MatSnackBar,
   ) { }
 
   async obterPorId(id: string) {
@@ -39,7 +41,9 @@ export class VagaService {
   }
 
   async excluir(vaga: Vaga) {
-    const endpoint = this.API_URL + '/alterar';
-    return this.http.post<any>(endpoint, vaga).toPromise();
+    const endpoint = this.API_URL + '/excluir';
+    return this.http.post<any>(endpoint, vaga).toPromise().then(result => result && result.mensagem ? this.snackBar.open(result.mensagem, undefined, {
+      duration: 3000
+    }) : null);
   }
 }

@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Cadastrar Vaga</h1>
+<h1 mat-dialog-title>{{data.titulo}}</h1>
 <div mat-dialog-content>
     <div>
         <form [formGroup]="form">
@@ -22,8 +22,17 @@
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Descrição</mat-label>
-                <textarea matInput placeholder="Descrição" formControlName="descricao"></textarea>
+                <textarea matInput placeholder="Descrição" formControlName="descricao"
+                    style="max-height: 20dvh;"></textarea>
             </mat-form-field>
+            <div class="button">
+                <button mat-button class="cadastrar" (click)="cadastrar()">
+                    {{data.titulo.indexOf("Alterar") >= 0 ? 'Alterar': 'Cadastrar'}}
+                </button>
+                <button mat-button class="cancelar" mat-dialog-close>
+                    Cancelar
+                </button>
+            </div>
         </form>
     </div>
 </div>

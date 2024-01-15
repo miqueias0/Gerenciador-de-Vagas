@@ -24,15 +24,16 @@ export class AuthService implements HttpInterceptor {
                 if (error.error) {
                     if (typeof error.error === 'string') {
                         mensagem = error.error;
-                    } else if (error.error.mensagem) {
-                        mensagem = error.error.mensagem;
-                    } else {
-                        if(error.error.stack){
-                            mensagem = error.error.stack.substring(error.error.stack.indexOf(' '), error.error.stack.indexOf("\r\n")).trim();
-                        }else{
-                            mensagem = `${error}`;
-                        }
-                    }
+                    } else if (error.error.message) {
+                        mensagem = error.error.message;
+                    } 
+                    // else {
+                    //     if(error.error.stack){
+                    //         mensagem = error.error.stack.substring(error.error.stack.indexOf(' '), error.error.stack.indexOf("\r\n")).trim();
+                    //     }else{
+                    //         mensagem = `${error}`;
+                    //     }
+                    // }
                 }
                 if (mensagem) {
                     this.snackBar.open(mensagem, undefined, {

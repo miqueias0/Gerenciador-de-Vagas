@@ -11,6 +11,7 @@ import { MaterialModule } from './material';
 import { RegistrarComponent } from './registrar';
 import { HubComponent } from './hub/components/hub.component';
 import { CadastrarComponent } from './cadastrar/cadastrar.component';
+import { VagasComponent } from './vagas/vagas/vagas.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { CadastrarComponent } from './cadastrar/cadastrar.component';
     RegistrarComponent,
     HubComponent,
     CadastrarComponent,
+    VagasComponent,
   ],
   imports: [
     BrowserModule,

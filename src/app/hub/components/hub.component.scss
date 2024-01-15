@@ -14,6 +14,7 @@
 .nav {
     width: 100dvw;
     height: 6dvh;
+    min-height: 34px;
     display: flex;
     flex-direction: row;
     border-bottom-width: 0.0625rem;
@@ -41,11 +42,11 @@
 
 .cadastrar {
     background-color: #fff;
-    padding: 0 1rem 4rem;
+    padding: 1rem 1rem;
     .vagas {
-        margin: 0 auto 12px;
         display: flex;
-        max-width: 65.25rem;
+        justify-content: center;
+        max-height: calc(95dvh - (6dvh + 15px));
         .app-cadastrar {
             width: 100%;
             height: 100%;

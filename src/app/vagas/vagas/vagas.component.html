@@ -1,0 +1,63 @@
+<div class="divPrincipal">
+    <div class="divLista">
+        <div *ngFor="let vaga of lista" class="dadosVagaLista" (click)="selecionarVaga(vaga)">
+            <h2 class="informacao">{{vaga.titulo}}</h2>
+            <div class="informacao" *ngIf="vaga.requisitos">
+                <div>
+                    <h4 style="margin: 0 0 6px !important; font-weight: bold">Requisitos</h4>
+                    <div>
+                        {{vaga.requisitosString}}
+                    </div>
+                </div>
+            </div>
+            <div style="padding: 1rem 1rem !important;">
+                <div>
+                    <h4 style="margin: 0 0 6px !important; font-weight: bold">Descrição</h4>
+                    <div>
+                        {{vaga.descricao}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="height: fit-content; width: 35dvw; position: sticky; top: 0;">
+        <div *ngIf="data" class="dadosVaga">
+            <div style="display: flex;">
+                <h2 class="informacao">{{data.titulo}}</h2>
+                <span style="flex: auto;"></span>
+                <div class="button" *ngIf="usuario && usuario.tipoUsuario === 'Contratante'">
+                    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="openDialog()">
+                            <span>Alterar Vaga</span>
+                        </button>
+                        <button mat-menu-item (click)="excluirVaga()">
+                            <span>Excluir Vaga</span>
+                        </button>
+                    </mat-menu>
+                </div>
+            </div>
+            <div class="informacao" *ngIf="data.requisitos">
+                <div>
+                    <h4 style="margin: 0 0 6px !important; font-weight: bold">Requisitos</h4>
+                    <div>
+                        {{data.requisitosString}}
+                    </div>
+                </div>
+            </div>
+            <div style="padding: 1rem 1rem !important;">
+                <div>
+                    <h4 style="margin: 0 0 6px !important; font-weight: bold">Descrição</h4>
+                    <div>
+                        {{data.descricao}}
+                    </div>
+                </div>
+            </div>
+            <div style="display: flex; justify-content: end; margin-right: 0.8rem;" class="button" *ngIf="usuario && usuario.tipoUsuario !== 'Contratante'">
+                <button mat-button class="cadastrar" (click)="candidatar()">Candidatar</button>
+            </div>
+        </div>
+    </div>
+</div>
