@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { CadastrarComponent } from 'src/app/cadastrar/cadastrar.component';
-import { Usuario } from 'src/app/models';
+import { Notificacao, Usuario } from 'src/app/models';
 import { Vaga } from 'src/app/models/vagaModelo';
-import { UsuarioService, VagaService } from 'src/app/services';
+import { NotificacaService, UsuarioService, VagaService } from 'src/app/services';
 
 @Component({
   selector: 'app-hub',
@@ -27,6 +27,7 @@ export class HubComponent implements OnInit {
     private readonly dialog: MatDialog,
     private readonly vagaService: VagaService,
     private readonly usuarioService: UsuarioService,
+    private readonly notificacaoService: NotificacaService
   ) { }
 
   ngOnInit(): void {
@@ -52,12 +53,42 @@ export class HubComponent implements OnInit {
 
   async obterUsuario() {
     this.usuario = await this.usuarioService.obterPorId();
+    this.notificar();
   }
 
-  deslogar(){
+  deslogar() {
     localStorage.removeItem('token');
     this.router.navigate(['/login']);
   }
 
+  async notificar() {
+    if (Notification.permission === 'granted') {
+      this.obterNoticacoes();
+    } else {
+      Notification.requestPermission().then(p => {
+        if (p === 'granted') {
+          this.obterNoticacoes();
+        }
+      });
+    }
+  }
+
+  async obterNoticacoes() {
+    let notificacao: Notificacao[] | null = null;
+    if (this._usuario?.tipoUsuario === 'Candidato') {
+      notificacao = await this.notificacaoService.obterListaPorCandidato();
+    } else if (this._usuario?.tipoUsuario === 'Contratante') {
+      notificacao = await this.notificacaoService.obterListaPorContratante();
+    }
+    if (notificacao) {
+      notificacao.forEach(x => {
+        new Notification('Notificação', {
+          body: x.mensagem,
+          icon: "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        });
+        this.notificacaoService.alterar(x);
+      });
+    }
+  }
 
 }

@@ -12,7 +12,7 @@ const service = {
 })
 export class CandidaturaService {
 
-  API_URL = "http://localhost:8083/" + service.url;
+  API_URL = "http://localhost:8083" + service.url;
 
   constructor(
     private http: HttpClient,
