@@ -41,8 +41,13 @@ export class AuthService implements HttpInterceptor {
                     });
                 }
 
-                if (error.status === 400 && (error.url ? error.url : error.message ? error.message : '').indexOf('/usuario/') >= 0) {
+                if ((error.url ? error.url : error.message ? error.message : '').indexOf('/usuario/') >= 0) {
                     localStorage.removeItem('token');
+                    if(!mensagem){
+                        this.snackBar.open(((error.url ? error.url : error.message ? error.message : '').indexOf('/login') >= 0) ? "Usuario não Encontrado": "Erro", undefined, {
+                            duration: 3000
+                        });
+                    }
                 }
 
                 return throwError(error);

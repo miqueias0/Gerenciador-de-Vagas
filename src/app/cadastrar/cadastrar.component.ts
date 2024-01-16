@@ -45,20 +45,6 @@ export class CadastrarComponent implements OnInit {
   }
 
   async cadastrar() {
-    let cont = 0;
-    while(cont < 10000){
-      setTimeout(() => {
-        this.vagaService.manter(new Vaga({
-          id: undefined,
-          titulo: "Desenvolvedor",
-          descricao: "asdasdasdasdasd",
-          requisitos: [
-              "Java"
-          ]
-      }));
-      }, 0);
-      cont++;
-    }
     if (!this.form.valid) return alert("Preencha todos os campos obrigatórios!");
     let vaga: Vaga | null = null;
     if (!this.data.objeto) {

@@ -52,7 +52,11 @@ export class HubComponent implements OnInit {
   }
 
   async obterUsuario() {
-    this.usuario = await this.usuarioService.obterPorId();
+    try{
+      this.usuario = await this.usuarioService.obterPorId();
+    }catch(error){
+      this.router.navigate(['/login'])
+    }
     this.notificar();
   }
 

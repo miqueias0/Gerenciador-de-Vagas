@@ -14,7 +14,7 @@ const service = {
 })
 export class VagaService {
 
-  API_URL = "http://localhost:8082" + service.url;
+  API_URL = "http://localhost:8082/" + service.url;
   constructor(
     private http: HttpClient,
     private readonly snackBar: MatSnackBar,
